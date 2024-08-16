@@ -1,3 +1,4 @@
+
 document.getElementById("time1").addEventListener("input", handleTimeInput);
 document.getElementById("time2").addEventListener("input", handleTimeInput);
 
@@ -10,6 +11,7 @@ function handleTimeInput(event) {
     event.target.value = formatTimeValue(input);
     calculateTimeDifference();
 }
+
 
 function calculateTimeDifference() {
     const time1 = document.getElementById("time1").value;
@@ -31,6 +33,7 @@ function calculateTimeDifference() {
         document.getElementById("result").innerHTML = "";
     }
 }
+
 
 function formatTimeValue(time) {
 
