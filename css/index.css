@@ -53,6 +53,26 @@ input[type="text"]:focus {
     color: #676c73;
 }
 
+button {
+    width: 150px;
+    background-color: #858992;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+
 @media (max-width: 600px) {
     body {
         padding: 20px;

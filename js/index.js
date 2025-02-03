@@ -1,17 +1,16 @@
-
 document.getElementById("time1").addEventListener("input", handleTimeInput);
 document.getElementById("time2").addEventListener("input", handleTimeInput);
+document.getElementById("copyBtn").addEventListener("click", copyToClipboard);
 
 function handleTimeInput(event) {
-    let input = event.target.value.replace(/\D/g, '');
+    let input = event.target.value.replace(/\D/g, '');  
     if (input.length > 6) {
-        input = input.slice(0, 6);
+        input = input.slice(0, 6);  
     }
-
+    
     event.target.value = formatTimeValue(input);
     calculateTimeDifference();
 }
-
 
 function calculateTimeDifference() {
     const time1 = document.getElementById("time1").value;
@@ -27,23 +26,21 @@ function calculateTimeDifference() {
         const minutes = Math.floor((differenceInSeconds % 3600) / 60);
         const seconds = differenceInSeconds % 60;
 
-        document.getElementById("result").innerHTML =
+        document.getElementById("result").innerHTML = 
             `Fark: <span>${hours}</span> saat, <span>${minutes}</span> dakika, <span>${seconds}</span> saniye`;
+
+        document.getElementById("hiddenCopyInput").value = `${time1} - ${time2}`;
     } else {
         document.getElementById("result").innerHTML = "";
+        document.getElementById("hiddenCopyInput").value = "";
     }
 }
 
-
 function formatTimeValue(time) {
-
     if (isValidTimeFormat(time)) return time;
-
-
     if (/^\d{6}$/.test(time)) {
         return `${time.slice(0, 2)}:${time.slice(2, 4)}:${time.slice(4, 6)}`;
     }
-
     return time;
 }
 
@@ -55,3 +52,28 @@ function toSeconds(time) {
 function isValidTimeFormat(time) {
     return /^\d{2}:\d{2}:\d{2}$/.test(time);
 }
+
+
+function copyToClipboard() {
+    const hiddenInput = document.getElementById("hiddenCopyInput");
+
+    if (!hiddenInput.value) {
+        return;
+    }
+
+    hiddenInput.select();
+    hiddenInput.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+
+    
+    let copyBtn = document.getElementById("copyBtn");
+    copyBtn.innerHTML = "✅ Kopyalandı!";
+    copyBtn.style.backgroundColor = "#28a745"; 
+
+    
+    setTimeout(() => {
+        copyBtn.innerHTML = "📋 Kopyala";
+        copyBtn.style.backgroundColor = "#858992"; 
+    }, 750);
+}
+
