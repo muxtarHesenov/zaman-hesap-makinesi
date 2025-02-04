@@ -77,3 +77,17 @@ function copyToClipboard() {
     }, 750);
 }
 
+document.getElementById("clearBtn").addEventListener("click", function() {
+    document.getElementById("time1").value = "";
+    document.getElementById("time2").value = "";
+    document.getElementById("result").innerHTML = "";
+
+    let clearBtn = document.getElementById('clearBtn');
+    clearBtn.style.backgroundColor = "#c9302c"
+
+
+    setTimeout(() => {
+        clearBtn.style.backgroundColor = "#858992"; 
+    }, 1000);
+    
+});

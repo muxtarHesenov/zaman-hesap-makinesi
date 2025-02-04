@@ -43,6 +43,7 @@ input[type="text"]:focus {
 }
 
 .result {
+    height: 24px;
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
@@ -54,6 +55,7 @@ input[type="text"]:focus {
 }
 
 button {
+    margin: 5px;
     width: 150px;
     background-color: #858992;
     color: white;
@@ -68,9 +70,23 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
     transform: scale(1.05);
 }
+
+
+#clearBtn {
+    
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+
 
 
 @media (max-width: 600px) {
