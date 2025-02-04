@@ -81,6 +81,7 @@ document.getElementById("clearBtn").addEventListener("click", function() {
     document.getElementById("time1").value = "";
     document.getElementById("time2").value = "";
     document.getElementById("result").innerHTML = "";
+    document.getElementById("hiddenCopyInput").value = "";
 
     let clearBtn = document.getElementById('clearBtn');
     clearBtn.style.backgroundColor = "#c9302c"
