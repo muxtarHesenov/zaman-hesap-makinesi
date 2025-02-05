@@ -89,6 +89,6 @@ document.getElementById("clearBtn").addEventListener("click", function() {
 
     setTimeout(() => {
         clearBtn.style.backgroundColor = "#858992"; 
-    }, 1000);
+    }, 750);
 
 });
