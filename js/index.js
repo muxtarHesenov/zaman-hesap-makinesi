@@ -96,7 +96,7 @@ function calculateTimeDifference() {
         const seconds = differenceInSeconds % 60;
 
         document.getElementById("result").innerHTML = 
-            `${t.resultPrefix} <span>${hours}</span> ${t.hour}, <span>${minutes}</span> ${t.minute}, <span>${seconds}</span> ${t.second}`;
+            `${t.resultPrefix} </span class="time-space" > ${hours} </span class="time-space" > ${t.hour}, </span class="time-space" > ${minutes} </span class="time-space" > ${t.minute}, </span class="time-space" > ${seconds} </span class="time-space" > ${t.second}`;
 
         document.getElementById("hiddenCopyInput").value = `${time1} - ${time2}`;
 
