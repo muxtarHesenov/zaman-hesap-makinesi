@@ -236,7 +236,7 @@ function pasteFromClipboard(event) {
                 
                 setTimeout(() => {
                     pasteBtn.style.backgroundColor = originalBg || '#d1d5db'; 
-                    pasteBtn.innerHTML = '📋';
+                    pasteBtn.innerHTML = 'Paste';
                 }, 750);
                 
             })
