@@ -19,8 +19,20 @@
 
         <h1 id="mainTitle">Zaman Farkı Hesaplayıcı</h1>
         
-        <input type="text" id="time1" placeholder="İlk Zaman (örn: 00:59:23)">
-        <input type="text" id="time2" placeholder="İkinci Zaman (örn: 01:45:35)">
+        <div class="input-group">
+            <input type="text" id="time1" placeholder="İlk Zaman (örn: 00:59:23)">
+            <button class="paste-btn" data-target="time1" title="Paste">
+                Paste
+            </button>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="time2" placeholder="İkinci Zaman (örn: 01:45:35)">
+            <button class="paste-btn" data-target="time2" title="Paste">
+                Paste
+            </button>
+        </div>
+        
         <div class="result" id="result"></div>
         
         <div class="comment-section">

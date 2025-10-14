@@ -211,3 +211,45 @@ function handleClear() {
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage('tr');
 });
+
+function pasteFromClipboard(event) {
+    const targetId = event.currentTarget.getAttribute('data-target');
+    const targetInput = document.getElementById(targetId);
+    const pasteBtn = event.currentTarget;
+
+    if (navigator.clipboard && navigator.clipboard.readText) {
+        navigator.clipboard.readText()
+            .then(text => {
+                let cleanText = text.replace(/[^0-9:]/g, ''); 
+                
+                if (!isValidTimeFormat(cleanText)) {
+                    cleanText = cleanText.replace(/\D/g, '').slice(0, 6);
+                }
+
+                targetInput.value = formatTimeValue(cleanText); 
+                
+                calculateTimeDifference();
+                
+                const originalBg = pasteBtn.style.backgroundColor;
+                pasteBtn.style.backgroundColor = '#28a745'; 
+                pasteBtn.innerHTML = '✅';
+                
+                setTimeout(() => {
+                    pasteBtn.style.backgroundColor = originalBg || '#d1d5db'; 
+                    pasteBtn.innerHTML = '📋';
+                }, 750);
+                
+            })
+            .catch(err => {
+                alert('Panodan okuma izni gerekiyor.');
+            });
+    } else {
+        alert('Tarayıcınız panodan otomatik yapıştırmayı desteklemiyor.');
+    }
+}
+
+const pasteButtons = document.querySelectorAll('.paste-btn');
+
+pasteButtons.forEach(button => {
+    button.addEventListener('click', pasteFromClipboard);
+});
