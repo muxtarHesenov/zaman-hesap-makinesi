@@ -1,0 +1,133 @@
+/* style.css */
+
+/* Temel Ayarlar */
+:root {
+    --bg-gri: #a8a9ad; 
+    --dark-text: #cdcdcd;
+    /* Eski gri arka plan rengine geri döndük */
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+    background-color: var(--bg-gri); /* KRİTİK: Arka planı eski griye geri aldık */
+    position: relative;
+    font-family: Arial, sans-serif;
+    color: var(--dark-text); /* Yazı rengini eski haline getirdik */
+}
+
+/* YAĞMUR ANİMASYONU BAŞLANGICI */
+.rain-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    z-index: 1; /* Yaprakların üzerinde, kutunun altında */
+    pointer-events: none; 
+    filter: blur(0px);
+}
+
+/* Tekil yağmur damlası stili (Yapraklardaki gibi) */
+.raindrop {
+    position: absolute;
+    top: -50px; /* Ekranın üstünden başlar */
+    left: var(--x-start); /* HTML'den gelen yatay başlangıç */
+    width: var(--size, 2px); /* HTML'den gelen boyut, varsayılan 2px */
+    height: var(--size, 2px); /* Damla boyutu */
+    border-radius: 50%; /* Yuvarlak damla */
+    background-color: #1525ff; /* Hafif mavi renk */
+    opacity: 0.7; /* Hafif şeffaf */
+    filter: blur(0.5px); /* Hafif bulanıklık */
+    animation: raindropFall var(--duration, 1s) linear var(--delay, 5s) infinite; /* Hız ve gecikme HTML'den gelir */
+    animation-fill-mode: forwards;
+}
+
+/* Yağmur düşme animasyonu (Basit dikey düşüş) */
+@keyframes raindropFall {
+    0% {
+        transform: translateY(0); /* Başlangıç pozisyonu (top:-50px'ten itibaren) */
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7; /* Görünür olmaya başla */
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(calc(100vh + 100px)); /* Ekranın altından daha da aşağıya düş */
+        opacity: 0; /* Ekran dışına çıkarken kaybol */
+    }
+}
+/* YAĞMUR ANİMASYONU SONU */
+
+
+/* YAPRAK ANİMASYONU BAŞLANGICI */
+.falling-leaves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Yağmurun altında, kutunun altında */
+    pointer-events: none; 
+    filter: blur(2px);
+}
+
+.leaf {
+    position: absolute;
+    opacity: 0; 
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)) brightness(100%) hue-rotate(var(--hue-rotate));
+    animation: fallAndSpin var(--duration) linear infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fallAndSpin {
+    0% {
+        transform: translate3d(var(--x-start), -1000px, 0) rotateZ(var(--z-start)) rotateY(0deg);
+        opacity: 0; 
+    }
+     0.1% {
+        opacity: 0.8;
+    }
+    5% {
+         transform: translate3d(var(--x-start), -100px, 0) rotateZ(var(--z-start)) rotateY(30deg);
+    }
+    10% {
+         transform: translate3d(var(--x-start), 0vh, 0) rotateZ(var(--z-start)) rotateY(60deg);
+    }
+    50% {
+        transform: translate3d(var(--x-mid), 50vh, 0) rotateZ(var(--z-mid)) rotateY(180deg);
+        opacity: 0.6;
+    }
+    90% {
+         transform: translate3d(var(--x-end), 105vh, 0) rotateZ(var(--z-end)) rotateY(300deg);
+        opacity: 0.1; 
+    }
+    99.9% {
+        opacity: 0; 
+    }
+    100% {
+        transform: translate3d(var(--x-end), calc(100vh + 1000px), 0) rotateZ(var(--z-end)) rotateY(360deg);
+        opacity: 0; 
+    }
+}
+/* YAPRAK ANİMASYONU SONU */
+
+/* Ön Plan İçeriği */
+.hesaplayici-kutu {
+    position: relative;
+    z-index: 10; 
+    background-color: #fff; 
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: var(--dark-text);
+    margin: 10vh auto;
+    max-width: 500px;
+    text-align: center;
+}
