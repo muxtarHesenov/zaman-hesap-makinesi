@@ -23,7 +23,7 @@ const translations = {
         copyBtn: "📋 Копировать",
         copySuccess: "✅ Скопировано!",
         clearBtn: "🧹 Очистить",
-        commentTemplate: "4.3 - Для удовлетворения клиентов мы должны быть внимательны ve не опаздывать с RO. {time1} - {time2}"
+        commentTemplate: "4.3 - Для удовлетворения клиентов мы должны быть внимательны И не опаздывать с RO. {time1} - {time2}"
     }
 };
 
